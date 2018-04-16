@@ -12,8 +12,8 @@ const navItems = [
     path: '/home',
     navItemName: 'Home'
   }, {
-    path: '/contacts',
-    navItemName: 'Contacts'
+    path: '/users',
+    navItemName: 'Users'
   }, {
     path: '/form',
     navItemName: 'Form'
