@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios';
 
 export default class Form extends React.Component {
   state = {
@@ -7,7 +8,6 @@ export default class Form extends React.Component {
 
   onInputChangeHandler = (e) => {
     let name = e.target.name;
-    console.log(name);
     let value = e.target.value;
     this.setState(() => {
       return {
@@ -19,9 +19,19 @@ export default class Form extends React.Component {
   onSubmitHandler = (e) => {
     e.preventDefault();
     const data = {
-      name: this.state.userName
+      username: this.state.userName
     }
-    console.log(data);    
+    axios({
+      method: 'post',
+      url: 'http://localhost:5000/users',
+      data
+    })
+    .then(result => {
+      console.log(result);
+      this.props.history.push(`/users`);
+    })
+    .catch(err => console.log(err));
+
   } // on form submit
 
   render(){
